@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Blog - Liste des articles</title>
+</head>
+<body>
+    <h1>Liste des articles</h1>
+    <div>
+        {% for blog in blogs %}
+            <p>
+                <a href="/blog/{{blog._id}}">{{ blog.title }}</a> par {{ blog.author ?? 'Anonyme' }}
+            </p>
+        {% else %}
+            <li>Pas d'article</li>
+        {% endfor %}
+    </div>
+</body>
+</html>
