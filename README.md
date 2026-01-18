@@ -15,6 +15,8 @@ Bienvenue sur **MVC Template** – un template MVC complet et fonctionnel de A �
 - **Templates Personnalisables** : Modifie facilement tes layouts et vues pour qu’ils correspondent à ton style.
 - **Facile à Étendre** : Un code clair et commenté pour que tu puisses l’adapter à tes besoins.
 
+  les password de base 12345678
+
 ---
 
 ## ⚙️ Installation
@@ -35,7 +37,6 @@ Bienvenue sur **MVC Template** – un template MVC complet et fonctionnel de A �
    ```
 
 3. **Configuration**
-
    - Copie le fichier `.env.example` en `.env` et configure les paramètres de connexion à ta base de données et autres configurations nécessaires.
    - Configure ton serveur web (Apache, Nginx, etc.) pour pointer vers le dossier public.
 
@@ -62,11 +63,3 @@ Le template te fournit une structure de base pour développer ton application MV
 Les routes sont définies dans le fichier dédié au routage pour une gestion centralisée des URL. Tu peux créer de nouvelles routes et étendre les fonctionnalités selon tes besoins.
 
 ---
-
-## ✨ Remerciements
-
-Merci d’utiliser **MVC Template** pour démarrer ton projet ! N’hésite pas à laisser une étoile sur le repo si tu aimes le projet.  
-Happy coding! 😎
-
-[![GitHub followers](https://img.shields.io/github/followers/VialsShiny?style=social)](https://github.com/VialsShiny)
-[![GitHub stars](https://img.shields.io/github/stars/VialsShiny/MVC-Template?style=social)](https://github.com/VialsShiny/MVC-Template)
