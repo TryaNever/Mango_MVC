@@ -6,7 +6,9 @@ class Router
     private $routes = [
         '/' => "BlogController@index",
         '/blog/{id}' => "BlogController@show",
-        '/login' => "AuthorController@login"
+        '/login' => "AuthorController@login",
+        '/register' => "AuthorController@register",
+        '/blognew' => "BlogController@blogNew"
     ];
 
     public function dispatch($request_uri)

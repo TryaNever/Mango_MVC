@@ -4,7 +4,7 @@ namespace App;
 
 class Validator
 {
-    public function validate($data, $model)
+    public function validate(array $data, string $model)
     {
         if (!class_exists($model)) {
             http_response_code(500);
@@ -14,9 +14,17 @@ class Validator
 
         $instance = new $model();
         foreach ($data as $key => $value) {
-            $setter = 'set' . ucfirst(str_replace('_', '', ucwords($key, '_')));
+            $setter = 'set' . str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
+
             if (method_exists($instance, $setter)) {
-                $instance->$setter($value);
+                try {
+                    $instance->$setter($value);
+                } catch (\InvalidArgumentException $e) {
+                    if (method_exists($instance, 'getErrors')) {
+                        $errors = $instance->getErrors();
+                        $errors[$key] = $e->getMessage();
+                    }
+                }
             }
         }
         return $instance;

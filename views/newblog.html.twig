@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouvel article</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="p-6">
+
+<h2>Créer un nouvel article</h2>
+
+<form action="/blognew" method="POST" class="flex flex-col gap-4">
+
+    <div class="flex flex-col gap-1">
+        <label for="title">Titre :</label>
+        <input
+            type="text"
+            id="title"
+            name="title"
+            class="border p-2"
+            value="{% if data.title is defined %}{{ data.title }}{% endif %}"
+        >
+        {% if errors.title is defined %}
+            <span class="text-red-600 text-sm">{{ errors.title }}</span>
+        {% endif %}
+    </div>
+
+    <div class="flex flex-col gap-1">
+        <label for="content">Contenu :</label>
+        <textarea
+            id="content"
+            name="content"
+        >{% if data.content is defined %}{{ data.content }}{% endif %}</textarea>
+        {% if errors.content is defined %}
+            <span class="text-red-600 text-sm">{{ errors.content }}</span>
+        {% endif %}
+    </div>
+    <button type="submit">
+        Publier l’article
+    </button>
+
+</form>
+
+</body>
+</html>

@@ -3,21 +3,63 @@ namespace App\Models;
 
 class Blog
 {
-    private $id;
-    private $author;
     private $title;
     private $content;
-    private $comments = [];
+    private $author;
+    private $errors = [];
 
-    public function getId() { return $this->id; }
-    public function getAuthor() { return $this->author; }
-    public function getTitle() { return $this->title; }
-    public function getContent() { return $this->content; }
-    public function getComments() { return $this->comments; }
+    public function getErrors()
+    {
+        return $this->errors;
+    }
 
-    public function setId($id) { $this->id = $id; }
-    public function setAuthor($author) { $this->author = $author; }
-    public function setTitle($title) { $this->title = $title; }
-    public function setContent($content) { $this->content = $content; }
-    public function setComments($comments) { $this->comments = $comments; }
+    public function setTitle($title)
+    {
+        $title = trim($title);
+
+        if (empty($title)) {
+            $this->errors['title'] = "Le titre est obligatoire";
+            return false;
+        }
+
+        if (strlen($title) > 255) {
+            $this->errors['title'] = "Le titre est trop long";
+            return false;
+        }
+
+        $this->title = $title;
+        return true;
+    }
+
+    public function setContent($content)
+    {
+        if (empty(trim($content))) {
+            $this->errors['content'] = "Le contenu est obligatoire";
+            return false;
+        }
+
+        $this->content = $content;
+        return true;
+    }
+
+    public function setAuthor($author)
+    {
+        if (empty(trim($author))) {
+            $this->errors['author'] = "L'auteur est obligatoire";
+            return false;
+        }
+
+        $this->author = $author;
+        return true;
+    }
+
+    public function getAllData()
+    {
+        return [
+            "title" => $this->title,
+            "content" => $this->content,
+            "author" => $this->author,
+            "created_at" => new \MongoDB\BSON\UTCDateTime()
+        ];
+    }
 }
