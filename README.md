@@ -24,8 +24,8 @@ Bienvenue sur **MVC Template** – un template MVC complet et fonctionnel de A �
 1. **Cloner le repository :**
 
    ```bash
-   git clone https://github.com/VialsShiny/MVC-Template.git
-   cd MVC-MANGO
+   git clone https://https://github.com/TryaNever/Mango_MVC.git
+   cd Mango_MVC
    ```
 
 2. **Installation des dépendances**
